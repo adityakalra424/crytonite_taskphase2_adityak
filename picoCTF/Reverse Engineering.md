@@ -66,3 +66,201 @@ End of assembler dump.
 i have more things to learn from this challenge like the disassemble command and the use of gdb,i will update my report when i learn those.
 
 
+# VAULT-DOOR-1
+
+**Flag:** `picoCTF{d35cr4mbl3_tH3_cH4r4cT3r5_f6daf4}`
+
+## How you approached the challenge:
+I opened the file given in the challenge, It was a java file.The code:
+```bash
+import java.util.*;
+
+class VaultDoor1 {
+    public static void main(String args[]) {
+        VaultDoor1 vaultDoor = new VaultDoor1();
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter vault password: ");
+	String userInput = scanner.next();
+	String input = userInput.substring("picoCTF{".length(),userInput.length()-1);
+	if (vaultDoor.checkPassword(input)) {
+	    System.out.println("Access granted.");
+	} else {
+	    System.out.println("Access denied!");
+	}
+    }
+
+    // I came up with a more secure way to check the password without putting
+    // the password itself in the source code. I think this is going to be
+    // UNHACKABLE!! I hope Dr. Evil agrees...
+    //
+    // -Minion #8728
+    public boolean checkPassword(String password) {
+        return password.length() == 32 &&
+               password.charAt(0)  == 'd' &&
+               password.charAt(29) == 'a' &&
+               password.charAt(4)  == 'r' &&
+               password.charAt(2)  == '5' &&
+               password.charAt(23) == 'r' &&
+               password.charAt(3)  == 'c' &&
+               password.charAt(17) == '4' &&
+               password.charAt(1)  == '3' &&
+               password.charAt(7)  == 'b' &&
+               password.charAt(10) == '_' &&
+               password.charAt(5)  == '4' &&
+               password.charAt(9)  == '3' &&
+               password.charAt(11) == 't' &&
+               password.charAt(15) == 'c' && 
+               password.charAt(8)  == 'l' && 
+               password.charAt(12) == 'H' &&
+               password.charAt(20) == 'c' && 
+               password.charAt(14) == '_' &&
+               password.charAt(6)  == 'm' &&
+               password.charAt(24) == '5' &&
+               password.charAt(18) == 'r' && 
+               password.charAt(13) == '3' &&
+               password.charAt(19) == '4' &&
+               password.charAt(21) == 'T' &&
+               password.charAt(16) == 'H' &&
+               password.charAt(27) == '6' &&
+               password.charAt(30) == 'f' &&
+               password.charAt(25) == '_' &&
+               password.charAt(22) == '3' &&
+               password.charAt(28) == 'd' &&
+               password.charAt(26) == 'f' &&
+               password.charAt(31) == '4';
+    }
+}
+```
+-----------------------------------------------------------------
+I could figure out that the program was checking if the flag is correct or not.`System.out.print("Enter vault password: ");
+String userInput = scanner.next();` was taking an input flag from the user.`String input = userInput.substring("picoCTF{".length(),userInput.length()-1);` was checking the format of the flag and the function `checkPassword` was checking the contents of the flag.I looked at the contents of the function `checkPassword`
+it was using `charat()` so i searched `charat()` in google. The `charAt()` method returns the character at the specified index in a string.So the function is using 
+the `charAt()` method to check the characters of the inputted password with the true password at different index and if all are true then the function return true.So the flag is written in the code itself.I manually wrote the code and got the flag.
+
+![WhatsApp Image 2024-11-07 at 14 33 27_516c93b1](https://github.com/user-attachments/assets/3c92a920-fc46-43b1-9202-16cd6bcab513)
+
+
+## What you learned through solving this challenge:
+1. chatAT() method 
+
+## Other incorrect methods you tried:
+- no incorrect methods
+
+## References
+- https://www.w3schools.com/java/ref_string_charat.asp
+
+# VAULT-DOOR-3
+
+**Flag:** `picoCTF{jU5t_a_s1mpl3_an4gr4m_4_u_79958f}`
+
+## How you approached the challenge:
+I opened the file given in the challenge, It was a java file.The code:
+```bash
+import java.util.*;
+
+class VaultDoor3 {
+    public static void main(String args[]) {
+        VaultDoor3 vaultDoor = new VaultDoor3();
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter vault password: ");
+        String userInput = scanner.next();
+	String input = userInput.substring("picoCTF{".length(),userInput.length()-1);
+	if (vaultDoor.checkPassword(input)) {
+	    System.out.println("Access granted.");
+	} else {
+	    System.out.println("Access denied!");
+        }
+    }
+
+    // Our security monitoring team has noticed some intrusions on some of the
+    // less secure doors. Dr. Evil has asked me specifically to build a stronger
+    // vault door to protect his Doomsday plans. I just *know* this door will
+    // keep all of those nosy agents out of our business. Mwa ha!
+    //
+    // -Minion #2671
+    public boolean checkPassword(String password) {
+        if (password.length() != 32) {
+            return false;
+        }
+        char[] buffer = new char[32];
+        int i;
+        for (i=0; i<8; i++) {
+            buffer[i] = password.charAt(i);
+        }
+        for (; i<16; i++) {
+            buffer[i] = password.charAt(23-i);
+        }
+        for (; i<32; i+=2) {
+            buffer[i] = password.charAt(46-i);
+        }
+        for (i=31; i>=17; i-=2) {
+            buffer[i] = password.charAt(i);
+        }
+        String s = new String(buffer);
+        return s.equals("jU5t_a_sna_3lpm18g947_u_4_m9r54f");
+    }
+}
+```
+I could figure out that the program was checking if the flag is correct or not but in this program the function was first encrypting the input and then comparing it with 
+`jU5t_a_sna_3lpm18g947_u_4_m9r54f`.`System.out.print("Enter vault password: "); String userInput = scanner.next();` is taking an input from the user for the flag.
+The `checkPasword` function was first encrypting the input and then comparing it with `jU5t_a_sna_3lpm18g947_u_4_m9r54f`.the encryption is 
+```bash
+char[] buffer = new char[32];
+        int i;
+        for (i=0; i<8; i++) {
+            buffer[i] = password.charAt(i);
+        }
+        for (; i<16; i++) {
+            buffer[i] = password.charAt(23-i);
+        }
+        for (; i<32; i+=2) {
+            buffer[i] = password.charAt(46-i);
+        }
+        for (i=31; i>=17; i-=2) {
+            buffer[i] = password.charAt(i);
+        }
+```
+So i wrote a code in c to decrypt the encrypted string `jU5t_a_sna_3lpm18g947_u_4_m9r54f`
+### code
+```bash
+#include<stdio.h>
+int main(){
+    int i=0;
+    char string[]="jU5t_a_sna_3lpm18g947_u_4_m9r54f";
+    char ans[100]="";
+    for (i=0; i<8; i++) {
+            ans[i]=string[i];
+        }
+        for (i=8 ; i<16; i++) {
+            ans[23-i]=string[i];
+        }
+        for (i=16; i<32; i+=2) {
+            ans[46-i]=string[i];
+        }
+        for (i=31; i>=17; i-=2) {
+            ans[i]=string[i];
+        }
+    for (i=0;i<33;i++){
+        printf("%c",ans[i]);
+
+    }
+    return 0;
+}
+```
+### output 
+`jU5t_a_s1mpl3_an4gr4m_4_u_79958f`
+
+![image](https://github.com/user-attachments/assets/d36fad81-9373-4ef9-a986-b55cf2e65c36)
+
+
+## What you learned through solving this challenge:
+1. charAT()
+
+## Other incorrect methods you tried:
+- i tried to decrypt it manually and it was only half right 
+
+## References
+no references 
+
+
+
