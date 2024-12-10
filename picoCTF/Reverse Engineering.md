@@ -149,6 +149,7 @@ the `charAt()` method to check the characters of the inputted password with the 
 ## References
 - https://www.w3schools.com/java/ref_string_charat.asp
 
+
 # VAULT-DOOR-3
 
 **Flag:** `picoCTF{jU5t_a_s1mpl3_an4gr4m_4_u_79958f}`
@@ -257,10 +258,247 @@ int main(){
 1. charAT()
 
 ## Other incorrect methods you tried:
-- i tried to decrypt it manually and it was only half right 
+- i tried to decrypt it manually and it was only half right
 
 ## References
 no references 
 
+# Vault Door 4
 
+**Flag:** `picoCTF{jU5t_4_bUnCh_0f_bYt3s_f4a8cd8f7e}`
+
+## How you approached the challenge:
+I opened the file given in the challenge, It was a java file.The code:
+``` bash
+import java.util.*;
+
+class VaultDoor4 {
+    public static void main(String args[]) {
+        VaultDoor4 vaultDoor = new VaultDoor4();
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter vault password: ");
+        String userInput = scanner.next();
+	String input = userInput.substring("picoCTF{".length(),userInput.length()-1);
+	if (vaultDoor.checkPassword(input)) {
+	    System.out.println("Access granted.");
+	} else {
+	    System.out.println("Access denied!");
+        }
+    }
+
+    // I made myself dizzy converting all of these numbers into different bases,
+    // so I just *know* that this vault will be impenetrable. This will make Dr.
+    // Evil like me better than all of the other minions--especially Minion
+    // #5620--I just know it!
+    //
+    //  .:::.   .:::.
+    // :::::::.:::::::
+    // :::::::::::::::
+    // ':::::::::::::'
+    //   ':::::::::'
+    //     ':::::'
+    //       ':'
+    // -Minion #7781
+    public boolean checkPassword(String password) {
+        byte[] passBytes = password.getBytes();
+        byte[] myBytes = {
+            106 , 85  , 53  , 116 , 95  , 52  , 95  , 98  ,
+            0x55, 0x6e, 0x43, 0x68, 0x5f, 0x30, 0x66, 0x5f,
+            0142, 0131, 0164, 063 , 0163, 0137, 0146, 064 ,
+            'a' , '8' , 'c' , 'd' , '8' , 'f' , '7' , 'e' ,
+        };
+        for (int i=0; i<32; i++) {
+            if (passBytes[i] != myBytes[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+```
+so the code is checking for the correct flag. The function `checkPassword` in the code checks if the the inputted answers is the correct flag. 
+checkPassword function :
+``` bash
+public boolean checkPassword(String password) {
+        byte[] passBytes = password.getBytes();
+        byte[] myBytes = {
+            106 , 85  , 53  , 116 , 95  , 52  , 95  , 98  ,
+            0x55, 0x6e, 0x43, 0x68, 0x5f, 0x30, 0x66, 0x5f,
+            0142, 0131, 0164, 063 , 0163, 0137, 0146, 064 ,
+            'a' , '8' , 'c' , 'd' , '8' , 'f' , '7' , 'e' ,
+        };
+        for (int i=0; i<32; i++) {
+            if (passBytes[i] != myBytes[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+```
+what the function does is it takes each character from the input in the `passBytes`  using `byte[] passBytes = password.getBytes();` where the input is `password` and compares is with `myBytes` using a `for` loop so i just had to convert the `myBytes` to get the answer/flag. The first line of myBytes is decimal, the second line of myBytes is hexadecimal, the third line of myBytes is octal and the last line of myBytes is just characters. I converted each unit of myBytes into character to get the flag.
+
+## What you learned through solving this challenge:
+1. hexadecimal conversions
+2. octal conversions
+3. decimal conversions
+
+## Other incorrect methods you tried:
+- no 
+
+## References
+no references
+
+
+# ARMssembly 0
+
+**Flag:** `picoCTF{e5c69cd8}`
+
+## How you approached the challenge:
+I downloaded the file `chall.s` from the challenge.It consisted a assembly code, i started learning assembly language but it was taking some time. then i went on 
+`ctf101.org` and then i went in the `reverse-engineering` section where i learned about assembly/machine code and disassemblers and debuggers and decompliers. 
+`Decompilers do the impossible and reverse compiled code back into psuedocode/code.`.I got to know that i could convert the assembly code into some other language 
+like `c`. So i searched for assembly language convertor and i got ` coderconvert.ai`  where i converted the aseembly code to `c` language.
+Using the site i converted the assembly language into `c` language. The converted code:
+``` bash
+#include <stdio.h>
+#include <stdlib.h>
+
+int func1(int a, int b) {
+    if (b <= a) {
+        return a;
+    } else {
+        return b;
+    }
+}
+
+int main(int argc, char *argv[]) {
+    int num1, num2, result;
+
+    if (argc < 3) {
+        printf("Usage: %s <num1> <num2>\n", argv[0]);
+        return 1;
+    }
+
+    num1 = atoi(argv[1]);
+    num2 = atoi(argv[2]);
+
+    result = func1(num1, num2);
+    printf("Result: %d\n", result);
+
+    return 0;
+}
+
+```
+In this code, i could see that the code is simply comparing the two arguments using the `func1` fucntion and returning the bigger number.So between the two argument given in the challenge, the bigger number was `3854998744`. Then i converted it into hexadecimal as intructed in the challenge which was `e5c69cd8`
+and i got the flag.
+
+## What you learned through solving this challenge:
+1. little bit of assembly(not the whole assembly)
+
+## References
+
+- ctf101.org
+- https://www.youtube.com/watch?v=gfmRrPjnEw4 ( youtube video where i was learning assembly)
+- https://www.codeconvert.ai/assembly-to-c-converter (  site where i converted the code )
+
+
+# ARMssembly 1
+
+**Flag:** `picoCTF{0000005a}`
+
+How you approached the challenge:
+I downloaded the file `chall.s` from the challenge.It consisted a assembly code,Using` codecovert.ai `i converted the assembly language into `c` language. The converted code:
+```bash
+#include <stdio.h>
+#include <stdlib.h>
+
+int func(int a) {
+    int stack[8]; // Simulating stack allocation
+    stack[3] = a; // str w0, [sp, 12]
+    stack[4] = 68; // str w0, [sp, 16]
+    stack[5] = 2; // str w0, [sp, 20]
+    stack[6] = 3; // str w0, [sp, 24]
+
+    stack[7] = stack[5] << stack[4]; // lsl w0, w1, w0
+    stack[7] = stack[7] / stack[6]; // sdiv w0, w1, w0
+    stack[7] = stack[7] - stack[3]; // sub w0, w1, w0
+
+    return stack[7]; // return value
+}
+
+int main(int argc, char *argv[]) {
+    int input;
+    if (argc > 1) {
+        input = atoi(argv[1]); // Convert string to integer
+    } else {
+        return 1; // No input provided
+    }
+
+    int result = func(input);
+    if (result == 0) {
+        puts("You win!");
+    } else {
+        puts("You Lose :(");
+    }
+
+    return 0;
+}#include <stdio.h>
+#include <stdlib.h>
+
+int func(int a) {
+    int stack[8]; // Simulating stack allocation
+    stack[3] = a; // str w0, [sp, 12]
+    stack[4] = 68; // str w0, [sp, 16]
+    stack[5] = 2; // str w0, [sp, 20]
+    stack[6] = 3; // str w0, [sp, 24]
+
+    stack[7] = stack[5] << stack[4]; // lsl w0, w1, w0
+    stack[7] = stack[7] / stack[6]; // sdiv w0, w1, w0
+    stack[7] = stack[7] - stack[3]; // sub w0, w1, w0
+
+    return stack[7]; // return value
+}
+
+int main(int argc, char *argv[]) {
+    int input;
+    if (argc > 1) {
+        input = atoi(argv[1]); // Convert string to integer
+    } else {
+        return 1; // No input provided
+    }
+
+    int result = func(input);
+    if (result == 0) {
+        puts("You win!");
+    } else {
+        puts("You Lose :(");
+    }
+
+    return 0;
+}
+```
+The challenge asks me to win.Looking at the code, if i want to win, then i must get the `result` as `0`.To do so i need to look as the function `func` 
+function `func`:
+``` bash
+int func(int a) {
+    int stack[8]; // Simulating stack allocation
+    stack[3] = a; // str w0, [sp, 12]
+    stack[4] = 68; // str w0, [sp, 16]
+    stack[5] = 2; // str w0, [sp, 20]
+    stack[6] = 3; // str w0, [sp, 24]
+
+    stack[7] = stack[5] << stack[4]; // lsl w0, w1, w0
+    stack[7] = stack[7] / stack[6]; // sdiv w0, w1, w0
+    stack[7] = stack[7] - stack[3]; // sub w0, w1, w0
+
+    return stack[7]; // return value
+}
+```
+The challenge gave us three varible `68 , 2, 3 ` and the function returns the `stack[7]` value, so i just had to choose a value of `a` such that the value of `stack[7]` becomes `0` so that i can get a `win`. First the stack[7] is `stack[7] = stack[5] << stack[4];` where `<<` is a shift operator.But the correct code should be `stack[7] = stack[4] << stack[5]` which is `68 << 2` which is `272`( how i got it was 68 << 2 gave me an error in the c compiler and then i converted the  assembly code into python which said 68 << 2 ) then the stack[7] is  `stack[7] = stack[7] / stack[6];` which is `272/3` which is `90` (int) so then 
+stack[3] which the value we need to find needs to satisfy `stack[7] = stack[7] - stack[3];` so that value of `stack[3]=a `is` 90 `.Then i converted 90 into hexadecimal which was `5a`. and i got the flag.
+
+## Other incorrect methods you tried:
+- i tried picoCTF{5a} but the format was given in the challenge which was picoCTF{xxxxxxxx} so the flag was picoCTF{0000005a}
+## References
+same as the ARMassembly 0 
 
