@@ -18,13 +18,37 @@ it contained three files `control.tar.gz` `data.tr.gz` and debian-binary and the
 i searched and searched and searched forever the two `control.tar.gz` `data.tr.gz` file and still got nothing then i looked at message `WITH-DUEDILIGENCE` so the passphrase
 was `DUEDILIGENCE` i used it on the first image and then the second image but got nothing but then the third image had the `flag.txt` file which had the file 
 ## What you learned through solving this challenge:
--how to use wireshark
--tftp protocol
--steghide
+1. how to use wireshark,
+2. tftp protocol,
+3. steghide
 ## Other incorrect methods you tried:
 i tried using tcpdump but i didnt understand it and i also tried dynamitelab but didnt understand it.
 
 
 ## References
--https://trailofbits.github.io/ctf/forensics/
--https://www.youtube.com/watch?v=A4_DOr7Eiqo
+ 1. https://trailofbits.github.io/ctf/forensics/
+ 2. https://www.youtube.com/watch?v=A4_DOr7Eiqo
+
+# m00nwalk
+
+**Flag:** `picoCTF{beep_boop_im_in_space}`
+
+## How you approached the challenge:
+I downloaded the file given in the challenge, it was a `wav` file.Then i went to `https://trailofbits.github.io/ctf/forensics/`  and i went to the video and audio file analysis where it talked about exiftool and audacity.so i downloaded `audacity` and imported the file but i got nothing new and i also installed mediainfo to get more info about the file.Then i read the hints,`How did pictures from the moon landing get sent back to Earth?` I search it and and then i search `in which format did the pictures from the moon landing get send back to earth `i found that it was `sstv` system.Then `i search how to convert sstv wav and rx` and i found rxsstv which then i installed it but the program was to convert wav to image and not the other way around. Then i search `sstv decoder` and then i got a github repo `https://github.com/colaclanth/sstv` i followed the instruction in the repo and then i installed the decoder and the used the decoder to decode the `wav` file. It then gave me a image `output.png`
+![result](https://github.com/user-attachments/assets/c047b711-8b08-4d29-86ca-15594326c713)
+`the image was rotated 180degree initially` 
+
+## What you learned through solving this challenge:
+ 1. sstv system
+ 2. how to download tools from github
+ 3. tookkit is important 
+## Other incorrect methods you tried:
+ 1. i tried the exiftool
+ 2. i tried audacity 
+
+## References
+ 1. https://trailofbits.github.io/ctf/forensics/
+ 2. https://github.com/colaclanth/sstv
+ 3. https://en.wikipedia.org/wiki/Slow-scan_television
+
+
