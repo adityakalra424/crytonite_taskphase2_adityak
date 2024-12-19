@@ -47,5 +47,40 @@ that was `28` and then i brute forced it, i manually tried every value from 1 to
 ## Other incorrect methods you tried:
 no 
 
-References
+## References
 - i learned about cookies in the oasis so i dont remember the references 
+# SOAP
+
+**Flag:** `picoCTF{XML_3xtern@l_3nt1t1ty_e5f02dbf}`
+
+## How you approached the challenge:
+I used the hint.Then i searched for `xml external entity injection` and i went to a site `https://portswigger.net/web-security/xxe` I learned about the `xml` and 
+differenct types of xml.Then i found the `Exploiting XXE to retrieve files`   where i studied about how to retrieve the` /etc/passwd file` by submitting the an  XXE payload and the challenge also said `Can you read the /etc/passwd file?`.The xxe payload was 
+```bash
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE foo [ <!ENTITY xxe SYSTEM "file:///etc/passwd"> ]>
+<stockCheck><productId>&xxe;</productId></stockCheck>
+```
+Then i went on the site and left clicked,went to inspect and the networks and then clicked on the details options under the picoctf panel which send a post request 
+then i right clicked on that request and clicked ` edit and resend ` and i changed the payload to the one mentioned above with some changes 
+the new payload which i sent :
+```bash
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE foo [ <!ENTITY xxe SYSTEM "file:///etc/passwd"> ]>
+<data><ID>&xxe;</ID></data>
+```
+and then i clicked on the response page and i got the flag.
+![image](https://github.com/user-attachments/assets/78f03982-7446-4b79-a90d-3b8f70a71170)
+
+
+## What you learned through solving this challenge:
+
+1. xxe (xml external entity injection 
+
+## Other incorrect methods you tried:
+1. I tried this challenge at the beginning of the tp and could not do it so i left this challenge.This time i could do the challenge in the first try but before
+i tried the same thing and i could not get a response and i even installed burp suite and tried to capture the network packet sent and tried to send my own payload
+but couldnt get a response but now i got it and i dont know why . I also saw video on how to send a network packet on burp suit and in a firefox brower when i first tried this challenge
+
+## References
+- https://portswigger.net/web-security/xxe
