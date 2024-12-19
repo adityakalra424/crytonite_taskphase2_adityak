@@ -105,3 +105,21 @@ binwalk to extract the hidden date from the image where i got a `flag.txt` file 
 
 ## References
 - none
+
+# extensions
+
+**Flag:** `picoCTF{now_you_know_about_extensions}`
+
+## How you approached the challenge:
+I downloaded the file and it was a txt file so i opened it,but the header was of a png file so i manually changed the extension of the file in the file manager 
+and then opened the file and i got the flag.
+<img width="849" alt="flag (2)" src="https://github.com/user-attachments/assets/6812329a-9f47-43e8-b950-fb5da88c3854" />
+
+## What you learned through solving this challenge:
+1. extensions
+
+## Other incorrect methods you tried:
+none
+
+## References
+none
