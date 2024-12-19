@@ -66,3 +66,23 @@ none
 
 ## References
 no references
+
+# hideme
+
+**Flag:** `picoCTF{Hiddinng_An_imag3_within_@n_ima9e_cda72af0}`
+
+## How you approached the challenge:
+I first tried steghide but it said the format is not avaible and i used a online steg but the site stopped working after i uploaded the image  then i used a hex editor and found some strings like ` secret/flag` and then i went to the terminal and typed ` strings flag.png | grep flag` and i found `secret/flag.png` so that is one info i used exiftool and it said ` Trailer data after PNG IEND chunk` so some data is stored in the image. Then i search in google how to extract files from png and how to extract hidden files from png and tools to extract hidden files from png.Then i said something about binwalk and then i installed binwalk using `sudo apt install binwalk` and then i extracted the hidden file in the flag.png which was another image named `flag.png` 
+
+![flag](https://github.com/user-attachments/assets/5bd3bdfb-a5a6-4023-ad9e-a5b48cefaf6f)
+
+## What you learned through solving this challenge:
+
+1. U can hid a lot of things in things
+2. binwalk tool 
+
+## Other incorrect methods you tried:
+- i tried to convert the png to jpg so that i could use steghide but i didnt know the passphrase 
+
+## References
+1. https://stackoverflow.com/questions/36530643/use-binwalk-to-extract-all-files
