@@ -141,3 +141,22 @@ none
 
 ## References
 none
+
+# Lookey here
+
+**Flag:** `picoCTF{gr3p_15_@w3s0m3_58f5c024}`
+
+## How you approached the challenge:
+I downloaded the file from the challenge,it was a txt file.I opened the file in the notepad and then i pressed control+f and search pico and i got the flag.
+other way was to go in the terminal and type `strings anthem.flag.txt | grep pico` and i got the same result 
+![image](https://github.com/user-attachments/assets/b33109bf-fc7d-42fe-b5f2-5d2f86571397)
+
+## What you learned through solving this challenge:
+
+1. grep
+
+## Other incorrect methods you tried:
+none
+## References
+1. i learnt about the grep and strings command due to the  previous challenges,I probably just searched how to print the strings in a file and how to search for a
+   word in the stack of strings in google.
