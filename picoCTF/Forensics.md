@@ -51,4 +51,18 @@ I downloaded the file given in the challenge, it was a `wav` file.Then i went to
  2. https://github.com/colaclanth/sstv
  3. https://en.wikipedia.org/wiki/Slow-scan_television
 
+# PcapPoisoning
 
+**Flag:** `picoCTF{P64P_4N4L7S1S_SU55355FUL_fc4e803f}`
+
+## How you approached the challenge:
+I first downloaded the file given in the challenge and i was a pcap file (packet capture) so i opened wireshark and opened the file there.Then i was going throught the traffic and then i saw a transmission from a different source and destination and its payload was readable and it was the flag.
+![image](https://github.com/user-attachments/assets/1edf9ce7-58d0-4f6a-a91f-7fa6efa2804e)
+
+## What you learned through solving this challenge:
+1. wireshark
+## Other incorrect methods you tried:
+none
+
+## References
+no references
