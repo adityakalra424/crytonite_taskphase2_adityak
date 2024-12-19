@@ -160,3 +160,12 @@ none
 ## References
 1. i learnt about the grep and strings command due to the  previous challenges,I probably just searched how to print the strings in a file and how to search for a
    word in the stack of strings in google.
+# What Lies Within
+
+**Flag:** `picoCTF{h1d1ng_1n_th3_b1t5}`
+
+## How you approached the challenge:
+I downloaded the file,Then i used the exiftool and then the binwalk and then strings command and the i put it in hex editor and still got nothing, then i took the hint and searched image decoder and then i when to a site `https://stylesuxx.github.io/steganography/` and decoded the image and then i got the flag
+
+References
+1. https://stylesuxx.github.io/steganography/
