@@ -123,3 +123,21 @@ none
 
 ## References
 none
+# So meta 
+
+**Flag:** `picoCTF{s0_m3ta_eb36bf44}`
+
+## How you approached the challenge:
+I downloaded the file given in the challenge and it was png file.I took the hint and it said meta data so i used `exiftool` to display the metadata of the `png` file and i got the flag in the artist section.
+![image](https://github.com/user-attachments/assets/a5f44bd8-86c1-435a-ad00-ce3084e96608)
+
+
+## What you learned through solving this challenge:
+
+1. exiftool
+
+## Other incorrect methods you tried:
+none
+
+## References
+none
