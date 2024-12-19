@@ -86,3 +86,22 @@ I first tried steghide but it said the format is not avaible and i used a online
 
 ## References
 1. https://stackoverflow.com/questions/36530643/use-binwalk-to-extract-all-files
+
+
+# Matryoshka doll
+
+**Flag:** `picoCTF{bf6acf878dcbd752f4721e41b1b1b66b}`
+
+## How you approached the challenge:
+`Matryoshka dolls are a set of wooden dolls of decreasing size placed one inside another.` Matryoshka dolls are placed inside one another.The challenge gave me 
+a jpg file, then i used `file` command and it said it was a `png` file so i manually converted the format in the file manager and then i used bin walk to extract the hidden data where i got `_2_c.jpg` which was again a `png` file so i manually converted the format in the file manager and then i used binwalk to extract the hidden data from the image where i got `_3_c.jpg` which was again a `png` file so i manually converted the format in the file manager and then i used binwalk to extract the hidden data from the image where i got `_4)c.jpg` which was again a `png` file so i manually converted the format in the file manager and then i sued 
+binwalk to extract the hidden date from the image where i got a `flag.txt` file .The content of the file `flag.txt` are `p i c o C T F { b f 6 a c f 8 7 8 d c b d 7 5 2 f 4 7 2 1 e 4 1 b 1 b 1 b 6 6 b }` and it was the flag.
+## What you learned through solving this challenge:
+
+1. binwalk 
+
+## Other incorrect methods you tried:
+- none
+
+## References
+- none
