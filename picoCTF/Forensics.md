@@ -186,3 +186,24 @@ none
 
 ## References
 none
+
+# Wireshark doo dooo do doo
+
+**Flag:** `wireshark-picoCTF{p33kab00_1_s33_u_deadbeef}`
+
+## How you approached the challenge:
+I downloaded the file given in the challenge.It was a `pcapng` file so i opened it in wireshark and i saw many http and post request/packets.Then i went to the 
+terminal and typed `strings shark1.pcapng | grep pico` but got no output.Then i went into files in wireshark and then clicked `export objects` `http` and i saw all
+the data that was transfered.In the stack of files i saw `two text` files.One test file content was `none` and the other text file content was 
+`Gur synt vf cvpbPGS{c33xno00_1_f33_h_qrnqorrs}` then i opened google and went to `dcode` `cipher identifier` and it gave me three results `rot 13`,`substitution` and ` shift `  then i went to `rot 13` and i got a flag but it was not the correct flag then i went to `shift` and i got the correct flag.
+
+## What you learned through solving this challenge:
+
+1. export objects from wireshark
+
+## Other incorrect methods you tried:
+
+- i used rot 13 to decryt the message 
+
+## References
+none 
