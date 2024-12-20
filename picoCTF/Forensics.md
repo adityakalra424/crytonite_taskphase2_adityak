@@ -168,3 +168,21 @@ I downloaded the file,Then i used the `exiftool` and then the` binwalk` and then
 
 References
 1. https://stylesuxx.github.io/steganography/
+
+# Packets Primer
+
+**Flag:** `picoCTF{p4ck37_5h4rk_b9d53765}`
+
+## How you approached the challenge:
+I downloaded the file and it was `pcap` file so i opened the file in wireshark and then i scrolled through the packets and got the flag in one of the packets payload
+![image](https://github.com/user-attachments/assets/ad9c265f-3311-4757-ae47-98eb5abbe98e)
+
+## What you learned through solving this challenge:
+1. wireshark
+2. pcap
+
+## Other incorrect methods you tried:
+none
+
+## References
+none
