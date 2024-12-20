@@ -56,7 +56,7 @@ I downloaded the file given in the challenge, it was a `wav` file.Then i went to
 **Flag:** `picoCTF{P64P_4N4L7S1S_SU55355FUL_fc4e803f}`
 
 ## How you approached the challenge:
-I first downloaded the file given in the challenge and i was a pcap file (packet capture) so i opened wireshark and opened the file there.Then i was going throught the traffic and then i saw a transmission from a different source and destination and its payload was readable and it was the flag.
+I first downloaded the file given in the challenge and it was a` pcap file (packet capture)` so i opened wireshark and opened the file there.Then i went throught the traffic and then i saw a transmission from a different source and destination and its payload was readable and it was the flag.
 ![image](https://github.com/user-attachments/assets/1edf9ce7-58d0-4f6a-a91f-7fa6efa2804e)
 
 ## What you learned through solving this challenge:
@@ -72,7 +72,7 @@ no references
 **Flag:** `picoCTF{Hiddinng_An_imag3_within_@n_ima9e_cda72af0}`
 
 ## How you approached the challenge:
-I first tried steghide but it said the format is not avaible and i used a online steg but the site stopped working after i uploaded the image  then i used a hex editor and found some strings like ` secret/flag` and then i went to the terminal and typed ` strings flag.png | grep flag` and i found `secret/flag.png` so that is one info i used exiftool and it said ` Trailer data after PNG IEND chunk` so some data is stored in the image. Then i search in google how to extract files from png and how to extract hidden files from png and tools to extract hidden files from png.Then i said something about binwalk and then i installed binwalk using `sudo apt install binwalk` and then i extracted the hidden file in the flag.png which was another image named `flag.png` 
+I first tried steghide but it said the format is not avaiable and i used a online steg but the site stopped working after i uploaded the image  then i used a hex editor and found some strings like ` secret/flag` and then i went to the terminal and typed ` strings flag.png | grep flag` and i found `secret/flag.png` so that was some info. i used exiftool and it said ` Trailer data after PNG IEND chunk` so some data is stored in the image. Then i search in google how to extract files from png and how to extract hidden files from png and tools to extract hidden files from png.Then i said something about binwalk and then i installed binwalk using `sudo apt install binwalk` and then i extracted the hidden file in the flag.png which was another image named `flag.png` 
 
 ![flag](https://github.com/user-attachments/assets/5bd3bdfb-a5a6-4023-ad9e-a5b48cefaf6f)
 
@@ -94,8 +94,7 @@ I first tried steghide but it said the format is not avaible and i used a online
 
 ## How you approached the challenge:
 `Matryoshka dolls are a set of wooden dolls of decreasing size placed one inside another.` Matryoshka dolls are placed inside one another.The challenge gave me 
-a jpg file, then i used `file` command and it said it was a `png` file so i manually converted the format in the file manager and then i used bin walk to extract the hidden data where i got `_2_c.jpg` which was again a `png` file so i manually converted the format in the file manager and then i used binwalk to extract the hidden data from the image where i got `_3_c.jpg` which was again a `png` file so i manually converted the format in the file manager and then i used binwalk to extract the hidden data from the image where i got `_4)c.jpg` which was again a `png` file so i manually converted the format in the file manager and then i sued 
-binwalk to extract the hidden date from the image where i got a `flag.txt` file .The content of the file `flag.txt` are `p i c o C T F { b f 6 a c f 8 7 8 d c b d 7 5 2 f 4 7 2 1 e 4 1 b 1 b 1 b 6 6 b }` and it was the flag.
+a jpg file, then i used `file` command and it said it was a `png` file so i manually converted the format in the file manager and then i used bin walk to extract the hidden data where i got `_2_c.jpg` which was again a `png` file so i manually converted the format in the file manager and then i used binwalk to extract the hidden data from the image from  where i got `_3_c.jpg` file  which was again a `png` file so i manually converted the format in the file manager and then i used binwalk to extract the hidden data from the imagewhere i got `_4_c.jpg` file which was again a `png` file so i manually converted the format in the file manager and then i used binwalk to extract the hidden data from the image  where i got a `flag.txt` file .The content of the file `flag.txt` are `p i c o C T F { b f 6 a c f 8 7 8 d c b d 7 5 2 f 4 7 2 1 e 4 1 b 1 b 1 b 6 6 b }` and it was the flag.
 ## What you learned through solving this challenge:
 
 1. binwalk 
@@ -147,7 +146,7 @@ none
 **Flag:** `picoCTF{gr3p_15_@w3s0m3_58f5c024}`
 
 ## How you approached the challenge:
-I downloaded the file from the challenge,it was a txt file.I opened the file in the notepad and then i pressed control+f and search pico and i got the flag.
+I downloaded the file from the challenge,it was a `txt` file.I opened the file in the notepad and then i pressed control+f and search pico and i got the flag.
 other way was to go in the terminal and type `strings anthem.flag.txt | grep pico` and i got the same result 
 ![image](https://github.com/user-attachments/assets/b33109bf-fc7d-42fe-b5f2-5d2f86571397)
 
@@ -158,14 +157,14 @@ other way was to go in the terminal and type `strings anthem.flag.txt | grep pic
 ## Other incorrect methods you tried:
 none
 ## References
-1. i learnt about the grep and strings command due to the  previous challenges,I probably just searched how to print the strings in a file and how to search for a
-   word in the stack of strings in google.
+1. i learnt about the grep and strings command from the previous challenges,I probably just searched `how to print the strings in a file` and `how to search for a
+   word in the stack of strings` in google at the time.
 # What Lies Within
 
 **Flag:** `picoCTF{h1d1ng_1n_th3_b1t5}`
 
 ## How you approached the challenge:
-I downloaded the file,Then i used the exiftool and then the binwalk and then strings command and the i put it in hex editor and still got nothing, then i took the hint and searched image decoder and then i when to a site `https://stylesuxx.github.io/steganography/` and decoded the image and then i got the flag
+I downloaded the file,Then i used the `exiftool` and then the` binwalk` and then `strings` command and the i put it in `hex` editor and still got nothing, then i took the hint and searched image decoder and then i when to a site `https://stylesuxx.github.io/steganography/` and decoded the image and then i got the flag
 
 References
 1. https://stylesuxx.github.io/steganography/
