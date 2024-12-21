@@ -51,6 +51,42 @@ I downloaded the file given in the challenge, it was a `wav` file.Then i went to
  2. https://github.com/colaclanth/sstv
  3. https://en.wikipedia.org/wiki/Slow-scan_television
 
+# tunn3l v1s10n
+
+**Flag:** `picoCTF{qu1t3_a_v13w_2020}`
+
+## How you approached the challenge:
+I downaloaded the file given in the challenge and then i went to the terminal and used `file` command to check which type of file it was and it said `data` so that meant that the file was corrupt.So i went to the `https://hexed.it/`and i looked at the header of the file and then i went on google and searched the list of file signature to find which file it was and it was a `bmp` file.then i went on google and searched how to fix a corrupt bmp file in hex editor and then i found a youtube video titled `How to Make a Windows BMP File from a Hex Editor` which explained all the bytes in a header of a file and their function.Then i went to the
+hex editor,editted a few bytes, some took trial and error but i could fix the file and view the flag.
+bytes in the header of file before  changes:
+``` bash
+42 4d 8e 26 2c 00 00 00 00 00 ba d0 00 00 ba 00
+00 00 6e 04 00 00 32 01 00 00 01 00 18 00 00 00
+````
+`42 4d` is the signature of the file which is bmp, `8e 26 2c 00` is the size of the file,The next four bytes are for the application that create the bmp file so they are `00 00 00 00`,the next four bytes is the same of all` windows bit map info header ` `36 00 00 00` but it is given `ba d0 00 00` so we need to change that (it was same in a bunch of video and the file header is 14  bytes+ 40 bytes of the but manp info header which is 54 bytes and 36 in hex ).the next four bytes is the size of the next header which the bitmap info header which is 40 bytes so `28 00 00 00` but it is given `ba 00 00 00` so that needs to change.
+Now the info header where the width and the height of the pic is stored.To get that i went to  the terminal and used the `exiftool` to get the width and the height
+which was 1134x306.So `6e 04 00 00` is 1134 and  `32 01 00 00` is 306 .
+bytes in the header of file after changes:
+``` bash
+42 4d 8e 26 2c 00 00 00 00 00 36 00 00 00 28 00
+00 00 6e 04 00 00 32 01 00 00 01 00 18 00 00 00
+````
+After the changes i could see the pic but not the image so i changes the height of the image instead of `32 01` i wrote `32 03` and i could see the flag.
+![image](https://github.com/user-attachments/assets/52af9fe3-e5c1-4218-a22a-b07252eabd04)
+
+## What you learned through solving this challenge:
+
+1. file signature
+2. hex editor
+3. file header of a bmp file 
+
+## Other incorrect methods you tried:
+1. after opening the pic but not getting the flag,i did a bunch of stuff in the hex editor itself but was not successfull
+
+## References
+1. https://www.youtube.com/watch?v=l7nIzo9ZCxY
+2. https://en.wikipedia.org/wiki/BMP_file_format
+
 # PcapPoisoning
 
 **Flag:** `picoCTF{P64P_4N4L7S1S_SU55355FUL_fc4e803f}`
