@@ -189,3 +189,65 @@ none
 
 ## References
 none
+
+# Mini RSA
+
+**Flag:** `picoCTF{e_sh0u1d_b3_lArg3r_6e2e6bda}`
+
+## How you approached the challenge:
+I went through the hints and then i researched about rsa and then i started searching for a formula for the rsa and after few hours i got a website
+`https://crypto.stackexchange.com/questions/6770/cracking-an-rsa-with-no-padding-and-very-small-e/6771#6771` 
+Normally to get the plaintext i could just compute n^(1/3) but the challenge said that it had some padding in the m^e such that it is slightly larger than n 
+so now the formula for the plain text will be ![image](https://github.com/user-attachments/assets/5d6206ec-aaf5-4096-82fc-3ef12ab40c3f)
+then i searched cube root python and went to this site 
+`https://stackoverflow.com/questions/28014241/how-to-find-cube-root-using-python`
+and i found the math.cbrt()
+then i wrote a python program to solve the challenge but it had a error saying that the number is too big for math.cbrt() so i went to google and searched for 
+`how to find the nth root of a large number python` and i got this `https://riptutorial.com/python/example/8751/computing-large-integer-roots` 
+and then i changed the code and know i need to find pico from all the intergers and print it so i first tried to convert the integers to strings but i couldnt 
+and then i tried to convert the integers to hex and that was successfull using `format()` function, now i just needed to search pico in hex and print that hex value in strings.so i went on google and searched `how to convert hex to string in python` and i got `bytes.fromhex()` function and i used that and then i got the flag.letssgoooo.
+the code:
+``` bash
+def nth_root(x, n):
+    # Start with some reasonable bounds around the nth root.
+    upper_bound = 1
+    while upper_bound ** n <= x:
+        upper_bound *= 2
+    lower_bound = upper_bound // 2
+    # Keep searching for a better result as long as the bounds make sense.
+    while lower_bound < upper_bound:
+        mid = (lower_bound + upper_bound) // 2
+        mid_nth = mid ** n
+        if lower_bound < mid and mid_nth < x:
+            lower_bound = mid
+        elif upper_bound > mid and mid_nth > x:
+            upper_bound = mid
+        else:
+            # Found perfect nth root.
+            return mid
+    return mid + 1
+n=1615765684321463054078226051959887884233678317734892901740763321135213636796075462401950274602405095138589898087428337758445013281488966866073355710771864671726991918706558071231266976427184673800225254531695928541272546385146495736420261815693810544589811104967829354461491178200126099661909654163542661541699404839644035177445092988952614918424317082380174383819025585076206641993479326576180793544321194357018916215113009742654408597083724508169216182008449693917227497813165444372201517541788989925461711067825681947947471001390843774746442699739386923285801022685451221261010798837646928092277556198145662924691803032880040492762442561497760689933601781401617086600593482127465655390841361154025890679757514060456103104199255917164678161972735858939464790960448345988941481499050248673128656508055285037090026439683847266536283160142071643015434813473463469733112182328678706702116054036618277506997666534567846763938692335069955755244438415377933440029498378955355877502743215305768814857864433151287
+c=1220012318588871886132524757898884422174534558055593713309088304910273991073554732659977133980685370899257850121970812405700793710546674062154237544840177616746805668666317481140872605653768484867292138139949076102907399831998827567645230986345455915692863094364797526497302082734955903755050638155202890599808146956044568639690002921620304969196755223769438221859424275683828638207433071955615349052424040706261639770492033970498727183446507482899334169592311953247661557664109356372049286283480939368007035616954029177541731719684026988849403756133033533171081378815289443019437298879607294287249591634702823432448559878065453908423094452047188125358790554039587941488937855941604809869090304206028751113018999782990033393577325766685647733181521675994939066814158759362046052998582186178682593597175186539419118605277037256659707217066953121398700583644564201414551200278389319378027058801216150663695102005048597466358061508725332471930736629781191567057009302022382219283560795941554288119544255055962
+
+for i in range(5000):
+    st = ("{:x}".format(nth_root(c+i*n,3)))
+    if "7069636f" in st:
+        print(st)
+        byte_string = bytes.fromhex(st)
+        result = byte_string.decode("utf-8")
+        print(result)
+```
+
+## What you learned through solving this challenge:
+1. RSA
+2. int to hex using format
+3. hex to string using bytes.fromhex() function
+
+
+## Other incorrect methods you tried:
+1. i tried the rsa online decoder, i knew it wont work because this challenege had some padding but i still tried it 
+
+References
+1. https://crypto.stackexchange.com/questions/6770/cracking-an-rsa-with-no-padding-and-very-small-e/6771#6771
+2. https://riptutorial.com/python/example/8751/computing-large-integer-roots
+3. wikipedia 
