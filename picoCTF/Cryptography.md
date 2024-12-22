@@ -41,8 +41,8 @@ for i in range(len(chars)):
         print chars[i] #prints
         b += 1 / 1
 ```
-Then i got stuck here for a few min(**hours) and then i wacthed the walkthrough video because i couldnt figure it out.then i told me about the selfinput 
-and it said pythontwo so i downloaded python two and then i went to the terminal and wrote cat convertout.py | python2 convertout.py 
+Then i got stuck here for a few min(**hours) and then i watched the walkthrough video because i couldnt figure it out.then it told me about the selfinput 
+and it said pythontwo so i downloaded python two and then i went to the terminal and wrote `cat convertout.py | python2 convertout.py `
 and i got ` a d l i b s `
 
 ## What you learned through solving this challenge:
@@ -127,7 +127,7 @@ if __name__ == "__main__":
     message = sys.argv[1]
     test(message, "trudeau")
 ```
-so i had to reverse the `encrypt` function and then reverse the `dynamic_xor_encrypt` function to get the flag.So i wrote a code to dcrypt the ciphertext
+so i had to reverse the `encrypt` function and then reverse the `dynamic_xor_encrypt` function to get the flag.So i wrote a code to decrypt the ciphertext
 the code:
 ```bash
 def generator(g, x, p):
